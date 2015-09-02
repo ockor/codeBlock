@@ -1,4 +1,4 @@
- # 使用 Vagrant 打造跨平台开发环境
+# 使用 Vagrant 打造跨平台开发环境
 
  ***
 
@@ -33,18 +33,18 @@ hahaha 是我们给这个 box 命的名字，~/box/precise64.box 是 box 所在�
 
 创建一个开发目录（比如：~/dev），你也可以使用已有的目录，切换到开发目录里，用 hahaha 镜像初始化当前目录的环境：
 
-$ cd ~/dev  # 切换目录
+`$ cd ~/dev  # 切换目录
 $ vagrant init hahaha  # 初始化
-$ vagrant up  # 启动环境
+$ vagrant up  # 启动环境`
 你会看到终端显示了启动过程，启动完成后，我们就可以用 SSH 登录虚拟机了，剩下的步骤就是在虚拟机里配置你要运行的各种环境和参数了。
 
-$ vagrant ssh  # SSH 登录
+`$ vagrant ssh  # SSH 登录
 $ cd /vagrant  # 切换到开发目录，也就是宿主机上的 `~/dev`
-~/dev 目录对应虚拟机中的目录是 /vagrant
+~/dev 目录对应虚拟机中的目录是 /vagrant`
 
 Windows 用户注意：Windows 终端并不支持 ssh，所以需要安装第三方 SSH 客户端，比如：Putty、Cygwin 等。
 
-5. 其他设置
+## 5. 其他设置
 
 Vagrant 初始化成功后，会在初始化的目录里生成一个 Vagrantfile 的配置文件，可以修改配置文件进行个性化的定制。
 
@@ -53,25 +53,25 @@ Vagrant 默认是使用端口映射方式将虚拟机的端口映射本地从而
 config.vm.network :private_network, ip: "192.168.33.10"
 重启虚拟机，这样我们就能用 192.168.33.10 访问这台机器了，你可以把 IP 改成其他地址，只要不产生冲突就行。
 
-6. 打包分发
+## 6. 打包分发
 
 当你配置好开发环境后，退出并关闭虚拟机。在终端里对开发环境进行打包：
 
 $ vagrant package
 打包完成后会在当前目录生成一个 package.box 的文件，将这个文件传给其他用户，其他用户只要添加这个 box 并用其初始化自己的开发目录就能得到一个一模一样的开发环境了。
 
-7. 常用命令
+## 7. 常用命令
 
-$ vagrant init  # 初始化
+`$ vagrant init  # 初始化
 $ vagrant up  # 启动虚拟机
 $ vagrant halt  # 关闭虚拟机
 $ vagrant reload  # 重启虚拟机
 $ vagrant ssh  # SSH 至虚拟机
 $ vagrant status  # 查看虚拟机运行状态
-$ vagrant destroy  # 销毁当前虚拟机
+$ vagrant destroy  # 销毁当前虚拟机`
 更多内容请查阅官方文档 http://docs.vagrantup.com/v2/cli/index.html
 
-8. 注意事项
+## 8. 注意事项
 
 使用 Apache/Nginx 时会出现诸如图片修改后但页面刷新仍然是旧文件的情况，是由于静态文件缓存造成的。需要对虚拟机里的 Apache/Nginx 配置文件进行修改：
 
